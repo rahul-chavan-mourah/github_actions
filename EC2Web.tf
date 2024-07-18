@@ -42,7 +42,7 @@ resource "aws_security_group" "awsec2_demo" {
   }
 }
 
-## EC2
+## VPC EC2
 resource "aws_instance" "awsec2_demo" {
   ami = "ami-0b72821e2f351e396"
   instance_type = "t2.micro"
@@ -51,3 +51,5 @@ resource "aws_instance" "awsec2_demo" {
     device_index = 0
   }
 }
+
+
