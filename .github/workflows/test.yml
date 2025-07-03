@@ -1,0 +1,8 @@
+name: test-project
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        run: echo "hello"
