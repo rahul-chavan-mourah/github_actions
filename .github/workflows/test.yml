@@ -1,8 +1,23 @@
-name: test-project
-on: push
+name: Deployment
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - name: Get code
-        run: echo "hello"
+        uses: actions/checkout@v3
+      - name: Cache dependancies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path:: node_modules
+          key: deps-node-modules-${{ hashfiles('**/package-lock.json') }}
+      - name: Install dependancies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run npm ci
+      - name: Lint code
+        run: npm run lint
