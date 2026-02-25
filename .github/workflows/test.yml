@@ -12,6 +12,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Load and cache dependancies
         uses: ./.github/actions/cache-deps
+        with:
+          caching: 'true'
       - name: Test code
         id: run-tests
         run: npm run test
@@ -29,6 +31,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Load and cache dependancies
         uses: ./.github/actions/cache-deps
+        with:
+          caching: 'true'
       - name: Build website
         run: npm run build
       - name: Upload artifacts
